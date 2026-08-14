@@ -55,11 +55,11 @@ geo_encoded_df = pd.DataFrame(geo_encoded, columns=one_hot_encoder_geography.get
 input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df], axis=1)
 
 # Scale the input data
-input_data_scaled = scaler.transform(input_data)
+input_data_ss = ss.transform(input_data)
 
 
 # Predict churn
-prediction = model.predict(input_data_scaled)
+prediction = model.predict(input_data_ss)
 prediction_proba = prediction[0][0]
 
 st.write(f'Churn Probability: {prediction_proba:.2f}')
